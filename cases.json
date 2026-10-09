@@ -1,0 +1,11 @@
+[
+  {"id":"authorized-confirmed","authorized":true,"execution_reported":true,"expected_effect":"v1","observation":"v1","expected":{"authorization":"AUTHORIZED","execution":"REPORTED","current_effect":"CONFIRMED"}},
+  {"id":"authorized-changed-after-write","authorized":true,"execution_reported":true,"expected_effect":"v1","observation":"v2","expected":{"authorization":"AUTHORIZED","execution":"REPORTED","current_effect":"CONTRADICTED"}},
+  {"id":"authorized-observation-missing","authorized":true,"execution_reported":true,"expected_effect":"v1","observation":null,"expected":{"authorization":"AUTHORIZED","execution":"REPORTED","current_effect":"NOT_ESTABLISHED"}},
+  {"id":"unauthorized-reported-confirmed","authorized":false,"execution_reported":true,"expected_effect":"v1","observation":"v1","expected":{"authorization":"DENIED","execution":"REPORTED","current_effect":"CONFIRMED"}},
+  {"id":"authorized-no-report-confirmed","authorized":true,"execution_reported":false,"expected_effect":"v1","observation":"v1","expected":{"authorization":"AUTHORIZED","execution":"NOT_REPORTED","current_effect":"CONFIRMED"}},
+  {"id":"unauthorized-no-report-no-observation","authorized":false,"execution_reported":false,"expected_effect":"v1","observation":null,"expected":{"authorization":"DENIED","execution":"NOT_REPORTED","current_effect":"NOT_ESTABLISHED"}},
+  {"id":"unauthorized-reported-contradicted","authorized":false,"execution_reported":true,"expected_effect":"v1","observation":"v2","expected":{"authorization":"DENIED","execution":"REPORTED","current_effect":"CONTRADICTED"}},
+  {"id":"authorized-no-report-contradicted","authorized":true,"execution_reported":false,"expected_effect":"v1","observation":"v2","expected":{"authorization":"AUTHORIZED","execution":"NOT_REPORTED","current_effect":"CONTRADICTED"}},
+  {"id":"unauthorized-no-report-confirmed","authorized":false,"execution_reported":false,"expected_effect":"v1","observation":"v1","expected":{"authorization":"DENIED","execution":"NOT_REPORTED","current_effect":"CONFIRMED"}}
+]
