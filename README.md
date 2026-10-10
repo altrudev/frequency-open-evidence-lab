@@ -13,7 +13,7 @@ python3 check.py
 python3 -I -m unittest discover -v
 ```
 
-Requires Python 3.8+ standard library only. The nine fixtures are in `cases.json` and the pure evaluation function is in `check.py`. No network, credentials, production actions, or external dependencies.
+Requires Python 3.8+ standard library only. The 12 vectors cover the full 2×2×3 claim-status cross-product, and tests reject non-Boolean authorization and execution-report fields. `expected_effect` means the state expected to hold after applying the decision to the prior state; for a refused write, that is the pre-write baseline, not the denied requested value. The checker does not derive or independently verify that baseline. The twelve fixtures are in `cases.json` and the pure evaluation function is in `check.py`. No network, credentials, production actions, or external dependencies.
 
 ## Semantics and limitations
 
@@ -26,9 +26,13 @@ Requires Python 3.8+ standard library only. The nine fixtures are in `cases.json
 
 ## Non-novelty boundary
 
-Open Evidence Lab already documents request/effect joins and post-commit divergence in [its request/effect comparison](https://github.com/probityai/agent-evidence-atlas/blob/main/docs/request-effect-join.md). These nine cases **do not introduce a new observation mechanism or independently establish any execution fact**. They are a small, dependency-free claim-separation regression that can serve as a cross-reader control, subject to maintainer agreement on field semantics.
+Open Evidence Lab already documents request/effect joins and post-commit divergence in [its request/effect comparison](https://github.com/probityai/agent-evidence-atlas/blob/main/docs/request-effect-join.md). These twelve cases **do not introduce a new observation mechanism or independently establish any execution fact**. They are a small, dependency-free claim-separation regression that can serve as a cross-reader control, subject to maintainer agreement on field semantics.
 
 `CONTRADICTED` means **the supplied current-state string differs from the supplied expected string**, not that the historical action was disproved. The checker does not validate a signature, event source, timestamp, causality, observer independence, target identity, or durability.
+
+## Refusal-case boundary
+
+The Lab's AR-01 through AR-04 refusal cases require independently confirming the store stayed unchanged. This fixture does not read a store, so its string comparisons cannot establish that property. The 12 vectors enumerate logical states, not real-world causal proof or policy-valid execution paths. See `test_refusal_baseline_is_not_requested_value`.
 
 ## Proposed next integration
 
