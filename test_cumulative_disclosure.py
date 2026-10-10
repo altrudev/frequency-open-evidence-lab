@@ -3,7 +3,7 @@ import unittest
 
 def decide(committed, observed, reconstruction_sets, threshold_proven):
     """Return a claim-separated decision; missing evidence fails closed."""
-    if not committed or not threshold_proven or reconstruction_sets is None:
+    if not committed or not threshold_proven or not reconstruction_sets:
         return "DENY_UNESTABLISHED"
     released = set(observed)
     if any(set(s).issubset(released) for s in reconstruction_sets):
@@ -16,6 +16,9 @@ class CumulativeDisclosureTests(unittest.TestCase):
 
     def test_missing_reconstruction_model_fails_closed(self):
         self.assertEqual(decide(True, ["a"], None, True), "DENY_UNESTABLISHED")
+
+    def test_empty_reconstruction_model_fails_closed(self):
+        self.assertEqual(decide(True, ["a"], [], True), "DENY_UNESTABLISHED")
 
     def test_non_fungible_chunks_cross_early(self):
         # A key plus one payload chunk reconstructs; scalar 3-of-N misses it.
