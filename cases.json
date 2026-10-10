@@ -1,11 +1,146 @@
 [
-  {"id":"authorized-confirmed","authorized":true,"execution_reported":true,"expected_effect":"v1","observation":"v1","expected":{"authorization":"AUTHORIZED","execution":"REPORTED","current_effect":"CONFIRMED"}},
-  {"id":"authorized-changed-after-write","authorized":true,"execution_reported":true,"expected_effect":"v1","observation":"v2","expected":{"authorization":"AUTHORIZED","execution":"REPORTED","current_effect":"CONTRADICTED"}},
-  {"id":"authorized-observation-missing","authorized":true,"execution_reported":true,"expected_effect":"v1","observation":null,"expected":{"authorization":"AUTHORIZED","execution":"REPORTED","current_effect":"NOT_ESTABLISHED"}},
-  {"id":"unauthorized-reported-confirmed","authorized":false,"execution_reported":true,"expected_effect":"v1","observation":"v1","expected":{"authorization":"DENIED","execution":"REPORTED","current_effect":"CONFIRMED"}},
-  {"id":"authorized-no-report-confirmed","authorized":true,"execution_reported":false,"expected_effect":"v1","observation":"v1","expected":{"authorization":"AUTHORIZED","execution":"NOT_REPORTED","current_effect":"CONFIRMED"}},
-  {"id":"unauthorized-no-report-no-observation","authorized":false,"execution_reported":false,"expected_effect":"v1","observation":null,"expected":{"authorization":"DENIED","execution":"NOT_REPORTED","current_effect":"NOT_ESTABLISHED"}},
-  {"id":"unauthorized-reported-contradicted","authorized":false,"execution_reported":true,"expected_effect":"v1","observation":"v2","expected":{"authorization":"DENIED","execution":"REPORTED","current_effect":"CONTRADICTED"}},
-  {"id":"authorized-no-report-contradicted","authorized":true,"execution_reported":false,"expected_effect":"v1","observation":"v2","expected":{"authorization":"AUTHORIZED","execution":"NOT_REPORTED","current_effect":"CONTRADICTED"}},
-  {"id":"unauthorized-no-report-confirmed","authorized":false,"execution_reported":false,"expected_effect":"v1","observation":"v1","expected":{"authorization":"DENIED","execution":"NOT_REPORTED","current_effect":"CONFIRMED"}}
+  {
+    "id": "authorized-reported-confirmed",
+    "authorized": true,
+    "execution_reported": true,
+    "expected_effect": "baseline-v1",
+    "observation": "baseline-v1",
+    "expected": {
+      "authorization": "AUTHORIZED",
+      "execution": "REPORTED",
+      "current_effect": "CONFIRMED"
+    }
+  },
+  {
+    "id": "authorized-reported-contradicted",
+    "authorized": true,
+    "execution_reported": true,
+    "expected_effect": "baseline-v1",
+    "observation": "other-v2",
+    "expected": {
+      "authorization": "AUTHORIZED",
+      "execution": "REPORTED",
+      "current_effect": "CONTRADICTED"
+    }
+  },
+  {
+    "id": "authorized-reported-not_established",
+    "authorized": true,
+    "execution_reported": true,
+    "expected_effect": "baseline-v1",
+    "observation": null,
+    "expected": {
+      "authorization": "AUTHORIZED",
+      "execution": "REPORTED",
+      "current_effect": "NOT_ESTABLISHED"
+    }
+  },
+  {
+    "id": "authorized-not-reported-confirmed",
+    "authorized": true,
+    "execution_reported": false,
+    "expected_effect": "baseline-v1",
+    "observation": "baseline-v1",
+    "expected": {
+      "authorization": "AUTHORIZED",
+      "execution": "NOT_REPORTED",
+      "current_effect": "CONFIRMED"
+    }
+  },
+  {
+    "id": "authorized-not-reported-contradicted",
+    "authorized": true,
+    "execution_reported": false,
+    "expected_effect": "baseline-v1",
+    "observation": "other-v2",
+    "expected": {
+      "authorization": "AUTHORIZED",
+      "execution": "NOT_REPORTED",
+      "current_effect": "CONTRADICTED"
+    }
+  },
+  {
+    "id": "authorized-not-reported-not_established",
+    "authorized": true,
+    "execution_reported": false,
+    "expected_effect": "baseline-v1",
+    "observation": null,
+    "expected": {
+      "authorization": "AUTHORIZED",
+      "execution": "NOT_REPORTED",
+      "current_effect": "NOT_ESTABLISHED"
+    }
+  },
+  {
+    "id": "denied-reported-confirmed",
+    "authorized": false,
+    "execution_reported": true,
+    "expected_effect": "baseline-v1",
+    "observation": "baseline-v1",
+    "expected": {
+      "authorization": "DENIED",
+      "execution": "REPORTED",
+      "current_effect": "CONFIRMED"
+    }
+  },
+  {
+    "id": "denied-reported-contradicted",
+    "authorized": false,
+    "execution_reported": true,
+    "expected_effect": "baseline-v1",
+    "observation": "other-v2",
+    "expected": {
+      "authorization": "DENIED",
+      "execution": "REPORTED",
+      "current_effect": "CONTRADICTED"
+    }
+  },
+  {
+    "id": "denied-reported-not_established",
+    "authorized": false,
+    "execution_reported": true,
+    "expected_effect": "baseline-v1",
+    "observation": null,
+    "expected": {
+      "authorization": "DENIED",
+      "execution": "REPORTED",
+      "current_effect": "NOT_ESTABLISHED"
+    }
+  },
+  {
+    "id": "denied-not-reported-confirmed",
+    "authorized": false,
+    "execution_reported": false,
+    "expected_effect": "baseline-v1",
+    "observation": "baseline-v1",
+    "expected": {
+      "authorization": "DENIED",
+      "execution": "NOT_REPORTED",
+      "current_effect": "CONFIRMED"
+    }
+  },
+  {
+    "id": "denied-not-reported-contradicted",
+    "authorized": false,
+    "execution_reported": false,
+    "expected_effect": "baseline-v1",
+    "observation": "other-v2",
+    "expected": {
+      "authorization": "DENIED",
+      "execution": "NOT_REPORTED",
+      "current_effect": "CONTRADICTED"
+    }
+  },
+  {
+    "id": "denied-not-reported-not_established",
+    "authorized": false,
+    "execution_reported": false,
+    "expected_effect": "baseline-v1",
+    "observation": null,
+    "expected": {
+      "authorization": "DENIED",
+      "execution": "NOT_REPORTED",
+      "current_effect": "NOT_ESTABLISHED"
+    }
+  }
 ]
