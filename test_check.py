@@ -53,6 +53,17 @@ class ClaimSeparationTests(unittest.TestCase):
                 with self.assertRaises(TypeError):
                     assess(dict(base, **{key: bad}))
 
+    def test_reject_missing_required_fields(self):
+        for authorized, reported in itertools.product((True, False), repeat=2):
+            base = dict(authorized=authorized, execution_reported=reported,
+                        expected_effect="v1", observation="v1")
+            for key in ("authorized", "execution_reported", "expected_effect", "observation"):
+                with self.subTest(authorized=authorized, reported=reported, missing=key):
+                    partial = dict(base)
+                    del partial[key]
+                    with self.assertRaises(TypeError):
+                        assess(partial)
+
     def test_refusal_baseline_is_not_requested_value(self):
         # A denied write must leave the pre-existing state untouched.
         requested = "new"
