@@ -13,7 +13,9 @@ def assess(c):
             raise TypeError(f"{key} must be a JSON boolean")
     if type(c.get("expected_effect")) is not str:
         raise TypeError("expected_effect must be a string")
-    if c.get("observation") is not None and type(c["observation"]) is not str:
+    if "observation" not in c:
+        raise TypeError("observation required; use null when unavailable")
+    if c["observation"] is not None and type(c["observation"]) is not str:
         raise TypeError("observation must be a string or null")
     authorization = "AUTHORIZED" if c["authorized"] else "DENIED"
     execution = "REPORTED" if c["execution_reported"] else "NOT_REPORTED"
