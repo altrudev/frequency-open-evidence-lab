@@ -53,6 +53,13 @@ class ClaimSeparationTests(unittest.TestCase):
                 with self.assertRaises(TypeError):
                     assess(dict(base, **{key: bad}))
 
+    def test_missing_observation_key_is_invalid(self):
+        case = dict(authorized=True, execution_reported=True, expected_effect="v1")
+        with self.assertRaisesRegex(TypeError, "observation required"):
+            assess(case)
+        self.assertEqual(assess(dict(case, observation=None))["current_effect"],
+                         "NOT_ESTABLISHED")
+
     def test_refusal_baseline_is_not_requested_value(self):
         # A denied write must leave the pre-existing state untouched.
         requested = "new"
